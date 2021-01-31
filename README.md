@@ -1,62 +1,50 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+// HackerNews Demo Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The clone project is written in LARAVEL PHP framework with the latest version.
+An initial framework setup is required in order to run the project successfully.
+- To clone the git repository - run this command where installation_path_directory shouldn't exist
+	$ git clone https://github.com/mecxi/hackernewsDemo installation_path_directory
 
-## About Laravel
+## Setup & installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Installing dependencies
+Project dependencies are managed by composer and defined in composer.lock file located at the project's root.
+An initial Composer installation is required in order to run the install command. For more details https://getcomposer.org/doc/00-intro.md
+	$ composer install
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Set the entry point of the application or the APACHE DOCUMENT_ROOT
+This has to be set at the web-server configuration. On LAMP stack with APACHE running virtual host something that goes like.
+	 DocumentRoot directory_path/public
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Edit the APP environment file located at directory_path/.env-example
+	- First make a backup of sample file .env-example and rename it to .env
+	$ cp directory_path/.env-example directory_path/.env
+	- Set these env variables to your local environment
+		APP_NAME=
+		APP_ENV=local
+		APP_DEBUG=true
+		APP_URL=
+		DB_DATABASE=
+		DB_USERNAME=
+		DB_PASSWORD=
 
-## Learning Laravel
+# Grant full permissions to APACHE to these directory_path/ in project folder
+	/directory_path/bootstrap /directory_path/storage
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+	On a LAMP stack Ubuntu, something that goes like this
+	$ sudo chown -R www-data:www-data /bootstrap/ storage/
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# For the project database structure, you can either make the SQL dump files which already contain database data or run migration provided by the framework.
+Make sure you have set your local database connection settings in .env file at the root of your project directory.
+Running the command below will create the database structure required by the application. Make sure the command is run at the root folder
+	$ php artisan migrate
 
-## Laravel Sponsors
+# Seed or populate database data for the application via the command line.  Either this can be populated using the SQL dump files or running these commands
+One thing, seeding data from the hackernews API by running the command below will take sometimes to complete but you can already view results by opening the application on the browser.
+	- Seed story_type data to the table with this command.
+	$ php artisan db:seed --class=StoryTypeSeeder
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+	- Seed or fetch data from the hackernews API by running this command
+	$ php artisan update:story
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# You're done! You can view news updating by reloading the frontpage.
