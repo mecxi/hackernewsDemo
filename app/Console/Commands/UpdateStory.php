@@ -76,7 +76,7 @@ class UpdateStory extends Command
 
             /* limit data to the top 500 */
             $collection = collect($data);
-            $slice = $collection->slice(0, 3);
+            $slice = $collection->slice(0, 500);
             $items = $slice->all();
 
             /* fetch data for current story */

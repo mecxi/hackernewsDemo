@@ -21,7 +21,7 @@ class HomeController extends Controller
         /* fetch related stories */
         $stories = Story::whereHas('storytype', function(Builder $query) use ($type){
             $query->where('type', $type);
-        })->get();
+        })->paginate(30);
 
         $data = [
             'title' => $type. ' stories',

@@ -158,3 +158,16 @@ ul#types {
     display: block;
 }
 
+[role="navigation"] {
+    padding: 30px;
+    font-size: 14px;
+}
+
+[role="navigation"] .hidden > div:nth-child(2) {
+    display: none;
+}
+
+[role="navigation"] > div:nth-child(1) > a:nth-child(1) {
+    margin-right: 80px;
+}
+
