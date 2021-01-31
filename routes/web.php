@@ -12,7 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function(){
+//   $retries = array(null, 'id'=>'1231');
+//    echo count($retries).'<pre>'. print_r($retries, true).'</pre>';
+//    if (!empty($retries)){
+//        echo 'hello world';
+//    }
+//});
+Route::group([
+    'namespace' => 'App\Http\Controllers',
+], function($router){
+    Route::get('/', 'HomeController@index');
+    Route::get('/{type}', 'HomeController@index');
+    Route::get('/comments/{story_id}', 'HomeController@viewComments');
 });

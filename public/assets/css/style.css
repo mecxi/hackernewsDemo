@@ -1,0 +1,160 @@
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    padding-left: 40px;
+}
+
+#sidebar {
+    width: 20%;
+    float: left;
+    background-color: #EBEBEB;
+    position: fixed;
+    height: 100%;
+}
+
+#items-container {
+    width: 80%;
+    float: left;
+    position: relative;
+    margin-left: 20%;
+    background-color: #F7F7F7;
+}
+
+ul li {
+    list-style: none;
+}
+
+#sidebar h3 {
+    border-bottom: 3px solid;
+    padding: 0;
+    padding-left: 30px;
+}
+
+#types li {
+    padding: 10px 30px;
+    text-align: center;
+    border: 1px solid #c0c0c0;
+    width: 30%;
+    margin-left: 20%;
+    margin-bottom: 10px;
+    border-radius: 5%;
+}
+
+ul#types {
+    padding: 0;
+}
+
+#types li a {
+    text-decoration: none;
+    color: #575757;
+}
+
+#items {
+    padding: 0 20px;
+}
+
+#items li a {
+    text-decoration: none;
+    color: #3A3A3A;
+    display: inline-block;
+}
+
+#items li {
+    padding: 20px;
+}
+
+#items li:hover {
+    background-color: #DFDFDF;
+}
+
+.item-score {
+    /*font-weight: bold;*/
+    display: inline-block;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.item-info {
+    /*display: inline-block;*/
+    width: 100%;
+    font-size: 12px;
+    color: #8A8A8A;
+    margin-top: 5px;
+    margin-left: 45px;
+}
+.item-info a:hover, .item-info-comment a:hover {
+    text-decoration: underline !important;
+}
+
+.item-info-comment {
+    /*display: inline-block;*/
+    width: 100%;
+    font-size: 12px;
+    color: #8A8A8A;
+    margin-top: 5px;
+    /*margin-left: 45px;*/
+}
+
+
+#items-caret {
+    font-size: 12px !important;
+}
+
+#items-caret li {
+    color: #8A8A8A;
+    margin-bottom: 10px;
+}
+
+.caret-desc {
+    display: block;
+    margin-bottom: 50px;
+    margin-left: 16px;
+    color: #3A3A3A;
+}
+.no-caret-desc {
+    display: block;
+    margin-bottom: 50px;
+    color: #3A3A3A;
+    margin-left: 0 !important;
+}
+
+
+/* Style the caret/arrow */
+.caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+    content: "\25B6";
+    color: #8A8A8A;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+    display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+    display: block;
+}
+
