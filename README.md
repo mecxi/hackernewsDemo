@@ -19,7 +19,8 @@ This has to be set at the web-server configuration. On LAMP stack with APACHE ru
 # Edit the APP environment file located at directory_path/.env-example
 	- First make a backup of sample file .env-example and rename it to .env
 	$ cp directory_path/.env-example directory_path/.env
-	- Set these env variables to your local environment
+
+	- Set these env variables to your local environment. Set the DB_DATABASE your database name defined locally.
 		APP_NAME=
 		APP_ENV=local
 		APP_DEBUG=true
@@ -28,11 +29,14 @@ This has to be set at the web-server configuration. On LAMP stack with APACHE ru
 		DB_USERNAME=
 		DB_PASSWORD=
 
-# Grant full permissions to APACHE to these directory_path/ in project folder
-	/directory_path/bootstrap /directory_path/storage
+	- Generate the APP_KEY by running this command
+		$ php artisan key:generate
 
-	On a LAMP stack Ubuntu, something that goes like this
-	$ sudo chown -R www-data:www-data /bootstrap/ storage/
+# Grant read and write permissions to APACHE to these folders and files in your project_directory_path/
+	directory_path/bootstrap directory_path/storage directory_path/.env
+
+	On a LAMP stack Ubuntu, something that goes like this, running the command at the root directory
+	$ sudo chown -R www-data:www-data bootstrap/ storage/ .env
 
 # For the project database structure, you can either make the SQL dump files which already contain database data or run migration provided by the framework.
 Make sure you have set your local database connection settings in .env file at the root of your project directory.
@@ -47,4 +51,6 @@ One thing, seeding data from the hackernews API by running the command below wil
 	- Seed or fetch data from the hackernews API by running this command
 	$ php artisan update:story
 
+
 # You're done! You can view news updating by reloading the frontpage.
+	- Please check the demo running on my live Webserver at this address http://172.105.88.127:1307
