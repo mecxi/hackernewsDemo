@@ -53,4 +53,4 @@ One thing, seeding data from the hackernews API by running the command below wil
 
 
 # You're done! You can view news updating by reloading the frontpage.
-	- Please check the demo running on my live Webserver at this address http://172.105.88.127:1307
+	- I have uploaded a Demo at my Webserver at this address http://172.105.88.127:1307
